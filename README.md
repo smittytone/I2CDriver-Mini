@@ -12,8 +12,12 @@ This is a tiny, USB-connected board that provides an I&sup2;C controller bus wit
     — Display the ambient temperature as read by an MCP9808 sensor.
     - Uses the I&sup2;C Driver Mini Python library.
     - Uses the [Adafruit MCP9808 High Accuracy I2C Temperature Sensor Breakout Board](https://www.adafruit.com/product/1782).
+- [`main.swift`](main.swift)
+    — Display the ambient temperature as read by an MCP9808 sensor.
+    - Uses the I&sup2;C Driver Mini CLI tool call from Swift.
+    - Uses the [Adafruit MCP9808 High Accuracy I2C Temperature Sensor Breakout Board](https://www.adafruit.com/product/1782).
 
 ## Licence ##
 
 The code in this repo is licensed under the terms of the MIT Licence.<br />
-The code in this repo &copuy; 2020, Tony Smith.
+The code in this repo &copy; 2020, Tony Smith.
