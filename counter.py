@@ -1,6 +1,7 @@
 """
 Countup and countdown readout using the I2CDriver Mini (https://i2cdriver.com/mini.html)
-and an HT16K33-based 4-digit, 7-segment LED (https://learn.adafruit.com/adafruit-7-segment-led-featherwings/overview)
+and an HT16K33-based 4-digit, 7-segment LED
+(https://learn.adafruit.com/adafruit-7-segment-led-featherwings/overview)
 """
 
 import time
@@ -86,12 +87,12 @@ class HT16K33:
         self.buffer[self.pos[digit]] = self.chars[char_val]
         if has_dot is True: self.buffer[self.pos[digit]] |= 0b10000000
 
-    def send_command(self, b):
+    def send_command(self, byte):
         """
         Send a command byte to the LED
         """
         self.i2c.start(self.addr, 0)
-        self.i2c.write([b])
+        self.i2c.write([byte])
         self.i2c.stop()
 
     def update(self):
@@ -113,22 +114,24 @@ if __name__ == '__main__':
 
     # Loop and count upwards
     while count < 10000:
-        bcd = int(str(count), 16)
-        led.set_number((bcd & 0xF000) >> 12, 0)
-        led.set_number((bcd & 0x0F00) >> 8, 1)
-        led.set_number((bcd & 0xF0) >> 4, 2)
-        led.set_number((bcd & 0x0F), 3)
+        count_bcd = int(str(count), 16)
+        led.set_number((count_bcd & 0xF000) >> 12, 0)
+        led.set_number((count_bcd & 0x0F00) >> 8, 1)
+        led.set_number((count_bcd & 0xF0) >> 4, 2)
+        led.set_number((count_bcd & 0x0F), 3)
         led.update()
         count += 1
-        time.sleep(0.1)
+        time.sleep(0.01)
+
+    led.set_colon()
 
     # Loop and count upwards
     while count > -1:
-        bcd = int(str(count), 16)
-        led.set_number((bcd & 0xF000) >> 12, 0)
-        led.set_number((bcd & 0x0F00) >> 8, 1)
-        led.set_number((bcd & 0xF0) >> 4, 2)
-        led.set_number((bcd & 0x0F), 3)
+        count_bcd = int(str(count), 16)
+        led.set_number((count_bcd & 0xF000) >> 12, 0)
+        led.set_number((count_bcd & 0x0F00) >> 8, 1)
+        led.set_number((count_bcd & 0xF0) >> 4, 2)
+        led.set_number((count_bcd & 0x0F), 3)
         led.update()
         count -= 1
-        time.sleep(0.1)
+        time.sleep(0.01)
