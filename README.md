@@ -24,6 +24,7 @@ This is a tiny, USB-connected board that provides an I&sup2;C controller bus wit
     — Display the CPU utilization on an HT16K33-based 7-segment LED display.
     - Uses the I&sup2;C Driver Mini Python library.
     - Uses the [Adafruit 0.56" 4-Digit 7-Segment Display w/I2C Backpack](https://www.adafruit.com/product/879).
+    - Requires the Python module *psutil*
 
 ## Licence ##
 

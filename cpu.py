@@ -18,6 +18,7 @@ class HT16K33:
     """
 
     HT16K33_SEGMENT_SYSTEM_ON = 0x21
+    HT16K33_SEGMENT_DISPLAY_ON = 0x81
     HT16K33_SEGMENT_CMD_BRIGHTNESS = 0xE0
     HT16K33_SEGMENT_MINUS_CHAR = 0x10
     HT16K33_SEGMENT_COLON_ROW = 0x04
@@ -39,7 +40,7 @@ class HT16K33:
 
         # Initialize display: clock on, display on
         self.send_command(self.HT16K33_SEGMENT_SYSTEM_ON)
-        #self.send_command(0x81)
+        self.send_command(self.HT16K33_SEGMENT_DISPLAY_ON)
         self.set_brightness(10)
         self.update()
 
@@ -50,6 +51,12 @@ class HT16K33:
         if brightness < 1 or brightness > 15: brightness = 15
         brightness &= 0x0F
         self.send_command(self.HT16K33_SEGMENT_CMD_BRIGHTNESS | brightness)
+
+    def set_flash(self, rate=0):
+        rates = [0, 2, 1, 0.5]
+        if rate not in rates: rate = 0
+        value = rates.index(rate)
+        self.send_command(0x81 | value)
 
     def set_colon(self, is_set=True):
         """
@@ -108,8 +115,8 @@ class HT16K33:
 if __name__ == '__main__':
     i2c_bus = i2cdriver.I2CDriver("/dev/cu.usbserial-DO029IEZ")
     led = HT16K33(i2c_bus)
-    led.set_brightness(5)
 
+    alert = False
     while True:
         # Get the CPU utilization and calculate
         # the Binary-Coded Decimal (BCD) form
@@ -121,6 +128,16 @@ if __name__ == '__main__':
         led.set_number((bcd_value & 0xF0) >> 4, 2)
         led.set_number((bcd_value & 0x0F), 3)
         led.update()
+
+        # Alert?
+        if cpu_util > 79:
+            if not alert:
+                led.set_flash(2)
+                alert = True
+        else:
+            if alert:
+                led.set_flash()
+                alert = False
 
         # Pause for breath
         time.sleep(0.5)

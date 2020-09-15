@@ -20,6 +20,7 @@ class HT16K33:
     """
 
     HT16K33_SEGMENT_SYSTEM_ON = 0x21
+    HT16K33_SEGMENT_DISPLAY_ON = 0x81
     HT16K33_SEGMENT_CMD_BRIGHTNESS = 0xE0
     HT16K33_SEGMENT_MINUS_CHAR = 0x10
     HT16K33_SEGMENT_COLON_ROW = 0x04
@@ -41,7 +42,7 @@ class HT16K33:
 
         # Initialize display: clock on, display on
         self.send_command(self.HT16K33_SEGMENT_SYSTEM_ON)
-        #self.send_command(0x81)
+        self.send_command(self.HT16K33_SEGMENT_DISPLAY_ON)
         self.set_brightness(10)
         self.update()
 
@@ -52,6 +53,12 @@ class HT16K33:
         if brightness < 1 or brightness > 15: brightness = 15
         brightness &= 0x0F
         self.send_command(self.HT16K33_SEGMENT_CMD_BRIGHTNESS | brightness)
+
+    def set_flash(self, rate=0):
+        rates = [0, 2, 1, 0.5]
+        if rate not in rates: rate = 0
+        value = rates.index(rate)
+        self.send_command(0x81 | value)
 
     def set_colon(self, is_set=True):
         """
