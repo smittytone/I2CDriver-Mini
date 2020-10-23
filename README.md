@@ -1,7 +1,5 @@
 # I&sup2;C Driver Mini #
 
-**In Development**
-
 A series of examples demonstrating use of the [I&sup2;C Driver Mini](https://i2cdriver.com/mini.html) USB breakout from Excamera Labs.
 
 This is a tiny, USB-connected board that provides an I&sup2;C controller bus with Python and command line control. The board is controlled over a serial line so it can also be accessed through Swift.
@@ -25,6 +23,9 @@ This is a tiny, USB-connected board that provides an I&sup2;C controller bus wit
     - Uses the I&sup2;C Driver Mini Python library.
     - Uses the [Adafruit 0.56" 4-Digit 7-Segment Display w/I2C Backpack](https://www.adafruit.com/product/879).
     - Requires the Python module *psutil*
+- [`matrix.py`](matrix.py)
+    - Simple demo.
+    - Uses the [Adafruit 0.8-inch 8 x 16 LED Matrix FeatherWing](https://www.adafruit.com/product/3149).
 
 ## Licence ##
 
