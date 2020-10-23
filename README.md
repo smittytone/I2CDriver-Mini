@@ -6,26 +6,26 @@ This is a tiny, USB-connected board that provides an I&sup2;C controller bus wit
 
 ## Examples ##
 
-- [`mcp9808.py`](mcp9808.py)
-    — Display the ambient temperature as read by an MCP9808 sensor.
-    - Uses the I&sup2;C Driver Mini Python library.
-    - Uses the [Adafruit MCP9808 High Accuracy I2C Temperature Sensor Breakout Board](https://www.adafruit.com/product/1782).
-- [`mcp9808.swift`](main.swift)
-    — Display the ambient temperature as read by an MCP9808 sensor.
-    - Uses the I&sup2;C Driver Mini CLI tool call from Swift.
-    - Uses the [Adafruit MCP9808 High Accuracy I2C Temperature Sensor Breakout Board](https://www.adafruit.com/product/1782).
-- [`counter.py`](counter.py)
-    — Display a count up and then count down on an HT16K33-based 7-segment LED display.
-    - Uses the I&sup2;C Driver Mini Python library.
-    - Uses the [Adafruit 0.56" 4-Digit 7-Segment Display w/I2C Backpack](https://www.adafruit.com/product/879).
-- [`cpu.py`](cpu.py)
-    — Display the CPU utilization on an HT16K33-based 7-segment LED display.
-    - Uses the I&sup2;C Driver Mini Python library.
-    - Uses the [Adafruit 0.56" 4-Digit 7-Segment Display w/I2C Backpack](https://www.adafruit.com/product/879).
-    - Requires the Python module *psutil*
-- [`matrix.py`](matrix.py)
-    - Simple demo.
-    - Uses the [Adafruit 0.8-inch 8 x 16 LED Matrix FeatherWing](https://www.adafruit.com/product/3149).
+* [`mcp9808.py`](mcp9808.py)
+    * Display the ambient temperature as read by an MCP9808 sensor.
+    * Uses the I&sup2;C Driver Mini Python library.
+    * Uses the [Adafruit MCP9808 High Accuracy I2C Temperature Sensor Breakout Board](https://www.adafruit.com/product/1782).
+* [`mcp9808.swift`](main.swift)
+    * Display the ambient temperature as read by an MCP9808 sensor.
+    * Uses the I&sup2;C Driver Mini CLI tool call from Swift.
+    * Uses the [Adafruit MCP9808 High Accuracy I2C Temperature Sensor Breakout Board](https://www.adafruit.com/product/1782).
+* [`counter.py`](counter.py)
+    * Display a count up and then count down on an HT16K33-based 7-segment LED display.
+    * Uses the I&sup2;C Driver Mini Python library.
+    * Uses the [Adafruit 0.56" 4-Digit 7-Segment Display w/I2C Backpack](https://www.adafruit.com/product/879).
+* [`cpu.py`](cpu.py)
+    * Display the CPU utilization on an HT16K33-based 7-segment LED display.
+    * Uses the I&sup2;C Driver Mini Python library.
+    * Uses the [Adafruit 0.56" 4-Digit 7-Segment Display w/I2C Backpack](https://www.adafruit.com/product/879).
+    * Requires the Python module *psutil*.
+* [`matrix.py`](matrix.py)
+    * Simple demo.
+    * Uses the [Adafruit 0.8-inch 8 x 16 LED Matrix FeatherWing](https://www.adafruit.com/product/3149).
 
 ## Licence ##
 
